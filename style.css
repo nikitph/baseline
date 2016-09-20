@@ -1,0 +1,29 @@
+.container {
+    flex: 1;
+    justify-content: center;
+    align-Items: center;
+    background-Color: transparent;
+}
+.welcome {
+    font-size: 20px;
+    text-align: center;
+    margin: 10px;
+    background-color: rgba(245, 252, 255,0.1);
+
+}
+.welcomecontainer
+{
+    background-color: rgba(245, 252, 255,0.8);
+    border-radius: 5%;
+}
+
+.instructions {
+    text-align: center;
+    color: beige;
+    margin-bottom: 5;
+}
+
+.backdrop {
+    flex: 1;
+    flex-direction: column;
+}
