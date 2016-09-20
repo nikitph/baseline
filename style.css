@@ -5,25 +5,29 @@
     background-Color: transparent;
 }
 .welcome {
-    font-size: 20px;
+    font-size: 25px;
+    font-family: AvenirNext-UltraLight
+    ;
     text-align: center;
-    margin: 10px;
+    margin: 20px;
     background-color: rgba(245, 252, 255,0.1);
 
 }
 .welcomecontainer
 {
-    background-color: rgba(245, 252, 255,0.8);
+    background-color: rgba(245, 252, 255,0.1);
     border-radius: 5%;
 }
 
 .instructions {
     text-align: center;
-    color: beige;
-    margin-bottom: 5;
+    font-size: 15px;
+
+    font-family: AvenirNext-UltraLight
+
 }
 
 .backdrop {
-    flex: 1;
-    flex-direction: column;
+    height:90;
+    width:70;
 }
