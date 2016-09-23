@@ -9,22 +9,32 @@ import {
     AppRegistry,
     StyleSheet,
     Text,
+    TextInput,
     View,
-    Image, TouchableOpacity,   TabBarIOS,
+    Image, TouchableOpacity, TabBarIOS, Switch, Slider, PickerItemIOS, PickerIOS
 
 } from 'react-native';
 import * as atb from 'react-native-animatable';
 import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
 import * as _this from "react/lib/ReactComponent";
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+import {Fumi, Hoshi} from 'react-native-textinput-effects';
+import Fumicust from './fumicust'
 import ListComponent from './listcomponent'
 import headerComponent from './headerComponent'
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { Container, Content, List, ListItem, InputGroup, Input, Thumbnail, Picker} from 'native-base';
-
+import {Col, Row, Grid} from "react-native-easy-grid";
+import Form from 'react-native-form'
+import nbtheme from './nbtheme'
+import {Container, Content, List, ListItem, InputGroup, Input, Thumbnail, CheckBox, Button} from 'native-base';
 
 
 var styl = require('./style');
 var cover = require("react-native/Libraries/Image/ImageResizeMode.js").cover;
+
+var distortions = ['What is the cognitive distortion here?', 'All or nothing - thinking', 'Overgeneralization', 'Mental filter', 'Discounting the positive',
+    'Jumping to conclusions',
+    'Magnification', 'Emotional reasoning', 'Should statements', 'Labeling', 'Personalization and blame'];
 
 class csstest extends Component {
     constructor(props) {
@@ -34,6 +44,8 @@ class csstest extends Component {
             selectedTab: 'redTab',
             notifCount: 0,
             presses: 0,
+            distortion: 'What is the cognitive distortion here?',
+            value: 0
         };
     }
 
@@ -115,104 +127,126 @@ class csstest extends Component {
 
         if (this.state.user) {
             return (
-            <TabBarIOS
-                unselectedTintColor="orange"
-                tintColor="rgb(196, 70, 70)"
-                barTintColor="white">
-                <Icon.TabBarItemIOS
-                    title="List"
-                    iconName="list"
-                    iconColor="orange"
-                    selectedIconName="list"
-                    selectedIconColor="rgb(196, 70, 70)"
-                    renderAsOriginal={true}
-                    selected={this.state.selectedTab === 'blueTab'}
-                    onPress={() => {
-                        this.setState({
-                            selectedTab: 'blueTab',
-                        });
-                    }}>
-                    <atb.View style={styl.container} animation="fadeIn" delay={500}>
-                        <ListComponent/>
-                        <Thumbnail size={50} source={{uri : this.state.user.photo}} />
-
-                        <Text style={{
-                            fontSize: 18,
-                            fontWeight: 'bold',
-                            marginBottom: 20
-                        }}>Welcome {this.state.user.name}</Text>
-                        <Text>Your email is: {this.state.user.email}</Text>
-
-                        <TouchableOpacity onPress={() => {
-                            this._signOut();
+                <TabBarIOS
+                    unselectedTintColor="orange"
+                    tintColor="rgb(196, 70, 70)"
+                    barTintColor="white">
+                    <Icon.TabBarItemIOS
+                        title="List"
+                        iconName="list"
+                        iconColor="orange"
+                        selectedIconName="list"
+                        selectedIconColor="rgb(196, 70, 70)"
+                        renderAsOriginal={true}
+                        selected={this.state.selectedTab === 'blueTab'}
+                        onPress={() => {
+                            this.setState({
+                                selectedTab: 'blueTab',
+                            });
                         }}>
-                            <View style={{marginTop: 50}}>
-                                <Text>Log out</Text>
-                            </View>
-                        </TouchableOpacity>
-                    </atb.View>
-                </Icon.TabBarItemIOS>
-                <Icon.TabBarItemIOS
-                    title="Record"
-                    iconName="fiber-smart-record"
-                    iconColor="orange"
-                    selectedIconName="fiber-smart-record"
-                    selectedIconColor="rgb(196, 70, 70)"
-                    renderAsOriginal={true}
-                    selected={this.state.selectedTab === 'redTab'}
-                    onPress={() => {
-                        this.setState({
-                            selectedTab: 'redTab',
-                        });
-                    }}>
+                        <atb.View style={styl.container} animation="fadeIn" delay={500}>
+                            <ListComponent/>
+                            <Thumbnail size={50} source={{uri: this.state.user.photo}}/>
 
-                    <Container>
-                        <Content>
+                            <Text style={{
+                                fontSize: 18,
+                                fontWeight: 'bold',
+                                marginBottom: 20
+                            }}>Welcome {this.state.user.name}</Text>
+                            <Text>Your email is: {this.state.user.email}</Text>
+
+                            <TouchableOpacity onPress={() => {
+                                this._signOut();
+                            }}>
+                                <View style={{marginTop: 50}}>
+                                    <Text>Log out</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </atb.View>
+                    </Icon.TabBarItemIOS>
+                    <Icon.TabBarItemIOS
+                        title="Record"
+                        iconName="fiber-smart-record"
+                        iconColor="orange"
+                        selectedIconName="fiber-smart-record"
+                        selectedIconColor="rgb(196, 70, 70)"
+                        renderAsOriginal={true}
+                        selected={this.state.selectedTab === 'redTab'}
+                        onPress={() => {
+                            this.setState({
+                                selectedTab: 'redTab',
+                            });
+                        }}>
+
+                        <Container>
+                            <Content>
 
 
-                            <List>
+                                <List>
 
-                                <ListItem style={{marginTop:40}}>
-                                    <Thumbnail size={40} source={{uri : this.state.user.photo}}  style={{alignItems:"center"}}/>
-                                    <Text style={{
-                                        fontSize: 18,
-                                        fontFamily : 'AvenirNext-UltraLight',
-                                        marginBottom: 20,
-                                        marginTop:20
-                                    }}>
-                                        Hey {this.state.user.name.split(' ')[0]}</Text>
+                                    <ListItem style={{marginTop: 10}}>
+                                        <Thumbnail size={40} source={{uri: this.state.user.photo}}
+                                                   style={{alignItems: "center"}}/>
+                                        <Text style={{
+                                            fontSize: 18,
+                                            fontFamily: 'AvenirNext-UltraLight',
+                                            marginBottom: 20,
+                                            marginTop: 20
+                                        }}>
+                                            Hey {this.state.user.name.split(' ')[0]}</Text>
 
-                                </ListItem>
-                                <ListItem>
-                                    <InputGroup>
-                                        <Input placeholder='Enter dysfunctional thought here' />
-                                    </InputGroup>
-                                </ListItem>
+                                    </ListItem>
+                                </List>
+                                <Fumicust
+                                    iconClass={FontAwesomeIcon}
+                                    iconName={'exclamation-circle'}
+                                    iconColor={'#f95a25'}
+                                    placeholder={'Enter Dysfunctional Thought here'}
+                                />
 
-                                <ListItem>
-                                    <InputGroup>
-                                        <Input placeholder='PASSWORD' secureTextEntry={true}/>
-                                    </InputGroup>
-                                </ListItem>
+                                <PickerIOS itemStyle={{fontSize: 15, color: 'rgba(0,0,0,0.4)', textAlign: 'center'}}
+                                           style={{marginLeft: 20, marginRight: 20, height: 150}}
+                                           selectedValue={this.state.distortion}
+                                           onValueChange={(dist) => this.setState({distortion: dist})}>
 
-                                <ListItem>
-                                    <InputGroup >
-                                        <Input inlineLabel label='NAME' placeholder='John Doe' />
-                                    </InputGroup>
-                                </ListItem>
+                                    {Object.values(distortions).map((distortion) => (
+                                        <PickerItemIOS
+                                            key={distortion}
+                                            value={distortion}
+                                            label={distortion}
+                                        />
+                                    ))}
+                                </PickerIOS>
 
-                                <ListItem>
-                                    <InputGroup >
-                                        <Input stackedLabel label='Address Line 1' placeholder='Address' />
-                                    </InputGroup>
-                                </ListItem>
+                                <Fumicust
+                                    iconClass={FontAwesomeIcon}
+                                    iconName={'check-square-o'}
+                                    iconColor={'#f95a25'}
+                                    placeholder={'Can you think of a rational response to refute this thought?'}
+                                />
+                                <Text style={{
+                                    fontSize: 18,
+                                    fontFamily: 'Arial', marginLeft: 40, color: 'rgba(0,0,0,0.2)'
+                                }}>Current anxiety level
+                                </Text>
+                                <Slider style={{marginLeft: 20, marginRight: 20}}
+                                        onValueChange={(value) => this.setState({value: parseInt(value)})}/>
 
-                            </List>
-                        </Content>
-                    </Container>
+                                <Button block style={{
+                                    marginLeft: 150,
+                                    marginRight: 150,
+                                    backgroundColor: 'rgba(0,0,255,0.5)'
+                                }} onPress={() => {
+                                    this.setState({
+                                        selectedTab: 'blueTab',
+                                    });}}> Submit </Button>
 
-                </Icon.TabBarItemIOS>
-            </TabBarIOS>
+
+                            </Content>
+                        </Container>
+
+                    </Icon.TabBarItemIOS>
+                </TabBarIOS>
 
 
             );
