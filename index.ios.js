@@ -31,6 +31,19 @@ import {Container, Content, List, ListItem, InputGroup, Input, Thumbnail, CheckB
 
 var styl = require('./style');
 var cover = require("react-native/Libraries/Image/ImageResizeMode.js").cover;
+var Realm = require('realm');
+const thoughtSchema = {
+    name: 'Thought',
+    properties: {
+        desc: 'string',
+        distortion: 'string',
+        anxiety: 'string',
+        counter: 'string'
+    }
+};
+
+let realm = new Realm({schema: [thoughtSchema]});
+
 
 var distortions = ['What is the cognitive distortion here?', 'All or nothing - thinking', 'Overgeneralization', 'Mental filter', 'Discounting the positive',
     'Jumping to conclusions',
@@ -39,18 +52,24 @@ var distortions = ['What is the cognitive distortion here?', 'All or nothing - t
 class csstest extends Component {
     constructor(props) {
         super(props);
+        this.clearText = this.clearText.bind(this);
         this.state = {
             user: null,
             selectedTab: 'redTab',
             notifCount: 0,
-            presses: 0,
+            desc: '',
             distortion: 'What is the cognitive distortion here?',
-            value: 0
+            anxiety: 0,
+            counter: ''
         };
     }
 
     componentDidMount() {
         this._setupGoogleSignin();
+    }
+
+    clearText() {
+        this.refs['ctr'].setNativeProps({value: ''});
     }
 
     async _setupGoogleSignin() {
@@ -97,7 +116,7 @@ class csstest extends Component {
 
             return (
 
-                <View style={styl.container} refreshing>
+                <View style={styl.containersignin} refreshing>
                     <atb.Image animation="fadeIn" onAnimationEnd={()=> console.log(this)}
                                style={styl.backdrop}
                                resizeMode='cover'
@@ -145,7 +164,7 @@ class csstest extends Component {
                             });
                         }}>
                         <atb.View style={styl.container} animation="fadeIn" delay={500}>
-                            <ListComponent/>
+                            <ListComponent ds={realm.objects('Thought')}/>
                             <Thumbnail size={50} source={{uri: this.state.user.photo}}/>
 
                             <Text style={{
@@ -198,6 +217,7 @@ class csstest extends Component {
                                     </ListItem>
                                 </List>
                                 <Fumicust
+                                    ref="desc"
                                     iconClass={FontAwesomeIcon}
                                     iconName={'exclamation-circle'}
                                     iconColor={'#f95a25'}
@@ -219,6 +239,7 @@ class csstest extends Component {
                                 </PickerIOS>
 
                                 <Fumicust
+                                    ref="ctr"
                                     iconClass={FontAwesomeIcon}
                                     iconName={'check-square-o'}
                                     iconColor={'#f95a25'}
@@ -237,11 +258,30 @@ class csstest extends Component {
                                     marginRight: 150,
                                     backgroundColor: 'rgba(0,0,255,0.5)'
                                 }} onPress={() => {
+
+                                    realm.write(() => {
+                                        realm.create('Thought', {
+                                            desc: this.state.desc,
+                                            distortion: this.state.distortion,
+                                            counter: this.state.counter,
+                                            anxiety: toString(this.state.anxiety)
+                                        });
+
+                                    });
+
+                                    console.log(this.state);
+                                    console.log(this.refs['ctr']);
+                                    this.refs['ctr'].setState({value:''});
+                                    this.refs['desc'].setState({value:''});
+
                                     this.setState({
                                         selectedTab: 'blueTab',
-                                    });}}> Submit </Button>
-
-
+                                        desc: '',
+                                        distortion: 'What is the cognitive distortion here?',
+                                        anxiety: 0,
+                                        counter: ''
+                                    });
+                                 }}> Submit </Button>
                             </Content>
                         </Container>
 

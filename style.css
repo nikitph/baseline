@@ -1,9 +1,19 @@
-.container {
+.containersignin {
     flex: 1;
     justify-content: center;
     align-Items: center;
     background-Color: transparent;
 }
+
+.container {
+    flex: 1;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-Items: stretch;
+    background-Color: transparent;
+    margin: 20;
+}
+
 .welcome {
     font-size: 25px;
     font-family: AvenirNext-UltraLight
@@ -30,4 +40,30 @@
 .backdrop {
     height:90;
     width:70;
+}
+
+.rowcontainer
+{
+    flex:1;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 64;
+    border: 1px solid orange;
+
+}
+
+.colcontainer
+{
+
+    flex:1;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    margin: 2;
+    margin-top: 4;
+}
+
+.vcol {
+height: 20;
+    margin: 5;
 }

@@ -1,26 +1,50 @@
 /**
  * Created by Omkareshwar on 9/21/16.
  */
-import React, { Component } from 'react';
-import { AppRegistry, ListView, Text, View } from 'react-native';
+import React, {Component} from 'react';
+import {AppRegistry, Text, View, RecyclerViewBackedScrollView} from 'react-native';
+import {ListView} from 'realm/react-native'
+var styl = require('./style');
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
 
 export default class ListComponent extends Component {
     // Initialize the hardcoded data
     constructor(props) {
         super(props);
-        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+
+        let dataSource = new ListView.DataSource({
+            rowHasChanged: (row1, row2) => row1 !== row2,
+
+        });
+
         this.state = {
-            dataSource: ds.cloneWithRows([
-                'John', 'Joel', 'James', 'Jimmy', 'Jackson', 'Jillian', 'Julie', 'Devin'
-            ])
+            dataSource: dataSource.cloneWithRows(props.ds)
         };
     }
+
     render() {
         return (
             <View style={{paddingTop: 22}}>
                 <ListView
+                    initialListSize={100}
+                    pageSize={50}
                     dataSource={this.state.dataSource}
-                    renderRow={(rowData) => <Text>{rowData}</Text>}
+                    renderRow={(rowData) => {
+                        console.log(rowData);
+                        return (
+                            <View style={styl.rowcontainer}>
+                                <View style={styl.colcontainer}>
+                                    <Icon name="check-circle" size={20} color="green"/>
+                                    <Text style={styl.vcol}>{rowData.counter}</Text>
+                                    <Text style={styl.vcol}>{rowData.desc}</Text></View>
+                                <View style={styl.colcontainer}>
+                                    <Icon name="list" size={20} color="#900"/>
+                                    <Text style={styl.vcol}>{rowData.desc}</Text>
+                                    <Text style={styl.vcol}>{rowData.anxiety}</Text></View>
+                            </View>
+                        );
+                    }}
                 />
             </View>
         );
