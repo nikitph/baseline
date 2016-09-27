@@ -222,6 +222,7 @@ class csstest extends Component {
                                     iconName={'exclamation-circle'}
                                     iconColor={'#f95a25'}
                                     placeholder={'Enter Dysfunctional Thought here'}
+                                    onChangeText={(val) => this.setState({desc: val})}
                                 />
 
                                 <PickerIOS itemStyle={{fontSize: 15, color: 'rgba(0,0,0,0.4)', textAlign: 'center'}}
@@ -244,6 +245,8 @@ class csstest extends Component {
                                     iconName={'check-square-o'}
                                     iconColor={'#f95a25'}
                                     placeholder={'Can you think of a rational response to refute this thought?'}
+                                    onChangeText={(val) => this.setState({counter: val})}
+
                                 />
                                 <Text style={{
                                     fontSize: 18,
@@ -268,6 +271,7 @@ class csstest extends Component {
                                         });
 
                                     });
+                                    console.log(realm.objects('Thought'));
 
                                     console.log(this.state);
                                     console.log(this.refs['ctr']);
