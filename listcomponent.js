@@ -6,7 +6,7 @@ import {AppRegistry, Text, View, RecyclerViewBackedScrollView} from 'react-nativ
 import {ListView} from 'realm/react-native'
 var styl = require('./style');
 import Icon from 'react-native-vector-icons/MaterialIcons';
-
+import Swipeout from 'react-native-swipeout';
 
 export default class ListComponent extends Component {
     // Initialize the hardcoded data
@@ -17,9 +17,12 @@ export default class ListComponent extends Component {
             rowHasChanged: (row1, row2) => row1 !== row2,
 
         });
+        var updat = 0;
+
 
         this.state = {
-            dataSource: dataSource.cloneWithRows(props.ds)
+            dataSource: dataSource.cloneWithRows(props.ds),
+            updat: props.updat
         };
     }
 
@@ -33,16 +36,19 @@ export default class ListComponent extends Component {
                     renderRow={(rowData) => {
                         console.log(rowData);
                         return (
+                            <Swipeout right={[ { text: 'Delete',backgroundColor:'red',color:'white', autoclose:true } ]} backgroundColor="white">
                             <View style={styl.rowcontainer}>
                                 <View style={styl.colcontainer}>
                                     <Icon name="check-circle" size={20} color="green"/>
                                     <Text style={styl.vcol}>{rowData.counter}</Text>
-                                    <Text style={styl.vcol}>{rowData.desc}</Text></View>
+                                    </View>
                                 <View style={styl.colcontainer}>
-                                    <Icon name="list" size={20} color="#900"/>
+                                    <Icon name="announcement" size={20} color="#900"/>
                                     <Text style={styl.vcol}>{rowData.desc}</Text>
                                     <Text style={styl.vcol}>{rowData.anxiety}</Text></View>
                             </View>
+                                </Swipeout>
+
                         );
                     }}
                 />

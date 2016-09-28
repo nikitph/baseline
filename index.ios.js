@@ -163,24 +163,8 @@ class csstest extends Component {
                                 selectedTab: 'blueTab',
                             });
                         }}>
-                        <atb.View style={styl.container} animation="fadeIn" delay={500}>
-                            <ListComponent ds={realm.objects('Thought')}/>
-                            <Thumbnail size={50} source={{uri: this.state.user.photo}}/>
-
-                            <Text style={{
-                                fontSize: 18,
-                                fontWeight: 'bold',
-                                marginBottom: 20
-                            }}>Welcome {this.state.user.name}</Text>
-                            <Text>Your email is: {this.state.user.email}</Text>
-
-                            <TouchableOpacity onPress={() => {
-                                this._signOut();
-                            }}>
-                                <View style={{marginTop: 50}}>
-                                    <Text>Log out</Text>
-                                </View>
-                            </TouchableOpacity>
+                        <atb.View style={styl.containerlist} animation="fadeIn" delay={500}>
+                            <ListComponent ds={realm.objects('Thought')} ref="ls" updat={7} />
                         </atb.View>
                     </Icon.TabBarItemIOS>
                     <Icon.TabBarItemIOS
@@ -191,6 +175,7 @@ class csstest extends Component {
                         selectedIconColor="rgb(196, 70, 70)"
                         renderAsOriginal={true}
                         selected={this.state.selectedTab === 'redTab'}
+                        on
                         onPress={() => {
                             this.setState({
                                 selectedTab: 'redTab',
@@ -271,10 +256,10 @@ class csstest extends Component {
                                         });
 
                                     });
-                                    console.log(realm.objects('Thought'));
+                                    {/*console.log(realm.objects('Thought'));*/}
 
-                                    console.log(this.state);
-                                    console.log(this.refs['ctr']);
+                                    {/*console.log(this.state);*/}
+                                    {/*console.log(this.refs['ctr']);*/}
                                     this.refs['ctr'].setState({value:''});
                                     this.refs['desc'].setState({value:''});
 
@@ -285,7 +270,8 @@ class csstest extends Component {
                                         anxiety: 0,
                                         counter: ''
                                     });
-                                 }}> Submit </Button>
+
+                                }}> Submit </Button>
                             </Content>
                         </Container>
 
