@@ -37,8 +37,9 @@ const thoughtSchema = {
     properties: {
         desc: 'string',
         distortion: 'string',
-        anxiety: 'string',
-        counter: 'string'
+        anxiety: {type: 'int', default: 0},
+        counter: 'string',
+        ddate: 'date'
     }
 };
 
@@ -59,7 +60,7 @@ class csstest extends Component {
             notifCount: 0,
             desc: '',
             distortion: 'What is the cognitive distortion here?',
-            anxiety: 0,
+            anxiety: 1,
             counter: ''
         };
     }
@@ -164,7 +165,7 @@ class csstest extends Component {
                             });
                         }}>
                         <atb.View style={styl.containerlist} animation="fadeIn" delay={500}>
-                            <ListComponent ds={realm.objects('Thought')} ref="ls" updat={7} />
+                            <ListComponent ds={realm} ref='ls' schem={thoughtSchema}/>
                         </atb.View>
                     </Icon.TabBarItemIOS>
                     <Icon.TabBarItemIOS
@@ -175,7 +176,6 @@ class csstest extends Component {
                         selectedIconColor="rgb(196, 70, 70)"
                         renderAsOriginal={true}
                         selected={this.state.selectedTab === 'redTab'}
-                        on
                         onPress={() => {
                             this.setState({
                                 selectedTab: 'redTab',
@@ -239,7 +239,11 @@ class csstest extends Component {
                                 }}>Current anxiety level
                                 </Text>
                                 <Slider style={{marginLeft: 20, marginRight: 20}}
-                                        onValueChange={(value) => this.setState({value: parseInt(value)})}/>
+                                        maximumValue={100}
+                                        minimumValue={0}
+                                        step={1}
+                                        onValueChange={(value) => this.setState({anxiety: value})}/>
+
 
                                 <Button block style={{
                                     marginLeft: 150,
@@ -252,7 +256,8 @@ class csstest extends Component {
                                             desc: this.state.desc,
                                             distortion: this.state.distortion,
                                             counter: this.state.counter,
-                                            anxiety: toString(this.state.anxiety)
+                                            anxiety: this.state.anxiety,
+                                            ddate:new Date()
                                         });
 
                                     });
@@ -262,6 +267,8 @@ class csstest extends Component {
                                     {/*console.log(this.refs['ctr']);*/}
                                     this.refs['ctr'].setState({value:''});
                                     this.refs['desc'].setState({value:''});
+                                    if(this.refs['ls'])
+                                        this.refs['ls'].setState({datasource:realm.objects('Thought').sorted('ddate')});
 
                                     this.setState({
                                         selectedTab: 'blueTab',

@@ -7,6 +7,10 @@ import {ListView} from 'realm/react-native'
 var styl = require('./style');
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Swipeout from 'react-native-swipeout';
+var Realm = require('realm');
+import {Container, Content, List, ListItem, InputGroup, Input, Thumbnail, CheckBox, Button} from 'native-base';
+
+
 
 export default class ListComponent extends Component {
     // Initialize the hardcoded data
@@ -17,12 +21,15 @@ export default class ListComponent extends Component {
             rowHasChanged: (row1, row2) => row1 !== row2,
 
         });
-        var updat = 0;
+
+        this.realm = new Realm({schema:[props.schem]});
+        this.realm.addListener('change', () => {
+            this.state.dataSource = dataSource.cloneWithRows(this.realm.objects('Thought'));
+        });
 
 
         this.state = {
-            dataSource: dataSource.cloneWithRows(props.ds),
-            updat: props.updat
+            dataSource: dataSource.cloneWithRows(props.ds.objects('Thought')),
         };
     }
 
@@ -36,7 +43,6 @@ export default class ListComponent extends Component {
                     renderRow={(rowData) => {
                         console.log(rowData);
                         return (
-                            <Swipeout right={[ { text: 'Delete',backgroundColor:'red',color:'white', autoclose:true } ]} backgroundColor="white">
                             <View style={styl.rowcontainer}>
                                 <View style={styl.colcontainer}>
                                     <Icon name="check-circle" size={20} color="green"/>
@@ -47,7 +53,6 @@ export default class ListComponent extends Component {
                                     <Text style={styl.vcol}>{rowData.desc}</Text>
                                     <Text style={styl.vcol}>{rowData.anxiety}</Text></View>
                             </View>
-                                </Swipeout>
 
                         );
                     }}
