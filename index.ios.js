@@ -171,6 +171,7 @@ class csstest extends Component {
                             this.setState({
                                 selectedTab: 'redTab',
                             });
+                            this.refs['desc']._focus();
                         }}>
 
                         <Container>

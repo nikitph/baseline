@@ -39,6 +39,7 @@ export default class Fumicust extends BaseInput {
         height: 90,
         iconColor: '#00aeef',
         animationDuration: 300,
+        blurOnSubmit:false
     };
 
     render() {
