@@ -43,7 +43,6 @@ export default class ListComponent extends Component {
                     contentInset={{bottom:49}}
                     dataSource={this.state.dataSource}
                     renderRow={(rowData) => {
-                        console.log(rowData);
                         return (
                             <View style={styl.rowcontainer}>
                                 <View style={styl.colcontainer}>

@@ -78,18 +78,15 @@ class csstest extends Component {
             });
 
             const user = await GoogleSignin.currentUserAsync();
-            console.log(user);
             this.setState({user});
         }
         catch (err) {
-            console.log("Google signin error", err.code, err.message);
         }
     }
 
     _signIn() {
         GoogleSignin.signIn()
             .then((user) => {
-                console.log(user);
                 this.setState({user: user});
             })
             .catch((err) => {
