@@ -39,6 +39,8 @@ export default class ListComponent extends Component {
                 <ListView
                     initialListSize={100}
                     pageSize={50}
+                    automaticallyAdjustContentInsets={false}
+                    contentInset={{bottom:49}}
                     dataSource={this.state.dataSource}
                     renderRow={(rowData) => {
                         console.log(rowData);
@@ -47,11 +49,14 @@ export default class ListComponent extends Component {
                                 <View style={styl.colcontainer}>
                                     <Icon name="check-circle" size={20} color="green"/>
                                     <Text style={styl.vcol}>{rowData.counter}</Text>
-                                    </View>
+                                    <Text style={{fontSize:14,font:'avenirNext',color:'orange'}}>Anxiety</Text>
+
+                                </View>
                                 <View style={styl.colcontainer}>
                                     <Icon name="announcement" size={20} color="#900"/>
-                                    <Text style={styl.vcol} numberOfLines={5}>{rowData.desc}</Text>
-                                    <Text style={{fontSize:24,font:'avenirNext'}}>{rowData.anxiety}</Text></View>
+                                    <Text style={styl.vcol}>{rowData.desc}</Text>
+                                    <Text style={{fontSize:24,font:'avenir',color:'orange'}}>{rowData.anxiety}</Text>
+                                </View>
                             </View>
 
                         );
