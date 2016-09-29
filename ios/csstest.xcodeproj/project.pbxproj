@@ -27,6 +27,7 @@
 		1B61B7C44F604E1F9BB6F843 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E25D58B13947483EA7499EB8 /* libz.tbd */; };
 		3528579F71B64854AB6F3DB0 /* libRNGoogleSignin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B8FE66C85EB4600B469D889 /* libRNGoogleSignin.a */; };
 		42089C28B5A9487D934A6611 /* Roboto_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20451D9AF8E340BEA3761D6F /* Roboto_medium.ttf */; };
+		50323E6C1D9DB71A00EA286A /* nyna-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 50323E6B1D9DB71A00EA286A /* nyna-1x.png */; };
 		50A17FFD1D91FEF500EE5313 /* GoogleAppUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A17FF61D91FEF500EE5313 /* GoogleAppUtilities.framework */; };
 		50A17FFE1D91FEF500EE5313 /* GoogleAuthUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A17FF71D91FEF500EE5313 /* GoogleAuthUtilities.framework */; };
 		50A17FFF1D91FEF500EE5313 /* GoogleNetworkingUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A17FF81D91FEF500EE5313 /* GoogleNetworkingUtilities.framework */; };
@@ -198,6 +199,7 @@
 		40FABF2CFA904CBBAC693FFA /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		4688058BD9D8454FA16C5505 /* Georgia.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Georgia.ttf; path = "../node_modules/native-base/Fonts/Georgia.ttf"; sourceTree = "<group>"; };
 		47825BF02B6741D3B430ACA6 /* Courier New.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Courier New.ttf"; path = "../node_modules/native-base/Fonts/Courier New.ttf"; sourceTree = "<group>"; };
+		50323E6B1D9DB71A00EA286A /* nyna-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nyna-1x.png"; sourceTree = "<group>"; };
 		506442A01D92020A00135762 /* csstest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = csstest.entitlements; path = csstest/csstest.entitlements; sourceTree = "<group>"; };
 		50A17FEF1D91FE2100EE5313 /* RNGoogleSignin.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNGoogleSignin.xcodeproj; path = "../node_modules/react-native-google-signin/ios/RNGoogleSignin.xcodeproj"; sourceTree = "<group>"; };
 		50A17FF61D91FEF500EE5313 /* GoogleAppUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleAppUtilities.framework; sourceTree = "<group>"; };
@@ -493,6 +495,7 @@
 		C803B06BB3A6423DAE86E251 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				50323E6B1D9DB71A00EA286A /* nyna-1x.png */,
 				C5139157601149A2BC107A07 /* Entypo.ttf */,
 				9923DF4DC572405EABE42BC6 /* EvilIcons.ttf */,
 				11B328644002445EB16DD570 /* FontAwesome.ttf */,
@@ -790,6 +793,7 @@
 				42089C28B5A9487D934A6611 /* Roboto_medium.ttf in Resources */,
 				CF5B61DBA5EB402DBF6E29E1 /* Roboto.ttf in Resources */,
 				BC263622556D4816A11ECCC6 /* SF-UI-Text-Regular.otf in Resources */,
+				50323E6C1D9DB71A00EA286A /* nyna-1x.png in Resources */,
 				FF7FDA8E225F440E9A6F3537 /* Skia.ttf in Resources */,
 				7A68575A0A8C441B8F450830 /* Times New Roman.ttf in Resources */,
 			);
@@ -899,7 +903,7 @@
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = nyna;
 				CODE_SIGN_ENTITLEMENTS = csstest/csstest.entitlements;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = LUAAW69QQN;
@@ -930,7 +934,7 @@
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = nyna;
 				CODE_SIGN_ENTITLEMENTS = csstest/csstest.entitlements;
 				DEVELOPMENT_TEAM = LUAAW69QQN;
 				FRAMEWORK_SEARCH_PATHS = (
