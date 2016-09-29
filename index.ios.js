@@ -130,7 +130,7 @@ class csstest extends Component {
                     <atb.Text animation="fadeIn" delay={2000} style={styl.instructions}>
                         To get started, lets login with Google
                     </atb.Text>
-                    <atb.View animation="fadeIn" delay={4000} style={{width: 130, height: 55}}>
+                    <atb.View animation="fadeIn" delay={4000} style={{width: 130, height: 55,marginTop:10}}>
 
                         <GoogleSigninButton
                             style={{width: 130, height: 48, "backgroundColor": "transparent"}}
