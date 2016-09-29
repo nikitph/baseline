@@ -16,17 +16,11 @@ import {
 } from 'react-native';
 import * as atb from 'react-native-animatable';
 import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
-import * as _this from "react/lib/ReactComponent";
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
-import {Fumi, Hoshi} from 'react-native-textinput-effects';
 import Fumicust from './fumicust'
 import ListComponent from './listcomponent'
-import headerComponent from './headerComponent'
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {Col, Row, Grid} from "react-native-easy-grid";
-import Form from 'react-native-form'
-import nbtheme from './nbtheme'
-import {Container, Content, List, ListItem, InputGroup, Input, Thumbnail, CheckBox, Button} from 'native-base';
+import {Container, Content, List, ListItem, Thumbnail, Button} from 'native-base';
 
 
 var styl = require('./style');
@@ -148,15 +142,15 @@ class csstest extends Component {
         if (this.state.user) {
             return (
                 <TabBarIOS
-                    unselectedTintColor="orange"
-                    tintColor="rgb(196, 70, 70)"
+                    unselectedTintColor="grey"
+                    tintColor="#ffa54c"
                     barTintColor="white">
                     <Icon.TabBarItemIOS
                         title="List"
                         iconName="list"
-                        iconColor="orange"
+                        iconColor="grey"
                         selectedIconName="list"
-                        selectedIconColor="rgb(196, 70, 70)"
+                        selectedIconColor="#ffa54c"
                         renderAsOriginal={true}
                         selected={this.state.selectedTab === 'blueTab'}
                         onPress={() => {
@@ -171,9 +165,9 @@ class csstest extends Component {
                     <Icon.TabBarItemIOS
                         title="Record"
                         iconName="fiber-smart-record"
-                        iconColor="orange"
+                        iconColor="grey"
                         selectedIconName="fiber-smart-record"
-                        selectedIconColor="rgb(196, 70, 70)"
+                        selectedIconColor="#ffa54c"
                         renderAsOriginal={true}
                         selected={this.state.selectedTab === 'redTab'}
                         onPress={() => {
@@ -246,8 +240,8 @@ class csstest extends Component {
 
 
                                 <Button block style={{
-                                    marginLeft: 150,
-                                    marginRight: 150,
+                                    marginLeft: 100,
+                                    marginRight: 100,
                                     backgroundColor: 'rgba(0,0,255,0.5)'
                                 }} onPress={() => {
 
@@ -290,16 +284,4 @@ class csstest extends Component {
         }
     }
 }
-
-var styles = StyleSheet.create({
-    tabContent: {
-        flex: 1,
-        alignItems: 'center',
-    },
-    tabText: {
-        color: 'white',
-        margin: 50,
-    },
-});
-
 AppRegistry.registerComponent('csstest', () => csstest);

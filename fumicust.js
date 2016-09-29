@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
     separator: {
         position: 'absolute',
         width: 1,
-        backgroundColor: '#f0f0f0',
+        backgroundColor: 'orange',
         marginTop: -8,
     },
 });

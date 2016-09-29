@@ -54,6 +54,7 @@
 {
     flex:1;
     max-width: 340;
+    min-width: 320;
     flex-direction: column;
     justify-content: center;
     flex-wrap: wrap;
@@ -74,7 +75,7 @@
 .vcol {
     flex:1;
     height: auto;
-    font-family: Avenir;
+    font-family: AvenirNext-Regular ;
     font-size: 12;
     padding:5;
 }
