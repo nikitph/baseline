@@ -116,15 +116,15 @@ class csstest extends Component {
                                style={styl.backdrop}
                                resizeMode='cover'
                                source={require('./lo.png')}/>
-                    <atb.View animation="fadeIn" style={styl.welcomecontainer} duration={1000}>
-                        <atb.Text animation="fadeInUp" style={styl.welcome} delay={1000}>
+                    <atb.View animation="fadeIn" style={styl.welcomecontainer} duration={500}>
+                        <atb.Text animation="fadeInUp" style={styl.welcome} delay={500}>
                             Welcome to Naryna
                         </atb.Text>
                     </atb.View>
-                    <atb.Text animation="fadeIn" delay={2000} style={styl.instructions}>
+                    <atb.Text animation="fadeIn" delay={1500} style={styl.instructions}>
                         To get started, lets login with Google
                     </atb.Text>
-                    <atb.View animation="fadeIn" delay={4000} style={{width: 130, height: 55, marginTop: 10}}>
+                    <atb.View animation="fadeIn" delay={2200} style={{width: 130, height: 55, marginTop: 10}}>
 
                         <GoogleSigninButton
                             style={{width: 130, height: 48, "backgroundColor": "transparent"}}
