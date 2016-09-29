@@ -124,7 +124,7 @@ class csstest extends Component {
                     <atb.Text animation="fadeIn" delay={2000} style={styl.instructions}>
                         To get started, lets login with Google
                     </atb.Text>
-                    <atb.View animation="fadeIn" delay={4000} style={{width: 130, height: 55,marginTop:10}}>
+                    <atb.View animation="fadeIn" delay={4000} style={{width: 130, height: 55, marginTop: 10}}>
 
                         <GoogleSigninButton
                             style={{width: 130, height: 48, "backgroundColor": "transparent"}}
@@ -251,18 +251,21 @@ class csstest extends Component {
                                             distortion: this.state.distortion,
                                             counter: this.state.counter,
                                             anxiety: this.state.anxiety,
-                                            ddate:new Date()
+                                            ddate: new Date()
                                         });
 
                                     });
-                                    {/*console.log(realm.objects('Thought'));*/}
+                                    {/*console.log(realm.objects('Thought'));*/
+                                    }
 
-                                    {/*console.log(this.state);*/}
-                                    {/*console.log(this.refs['ctr']);*/}
-                                    this.refs['ctr'].setState({value:''});
-                                    this.refs['desc'].setState({value:''});
-                                    if(this.refs['ls'])
-                                        this.refs['ls'].setState({datasource:realm.objects('Thought').sorted('ddate')});
+                                    {/*console.log(this.state);*/
+                                    }
+                                    {/*console.log(this.refs['ctr']);*/
+                                    }
+                                    this.refs['ctr'].setState({value: ''});
+                                    this.refs['desc'].setState({value: ''});
+                                    if (this.refs['ls'])
+                                        this.refs['ls'].setState({datasource: realm.objects('Thought').sorted('ddate')});
 
                                     this.setState({
                                         selectedTab: 'blueTab',
@@ -276,6 +279,18 @@ class csstest extends Component {
                             </Content>
                         </Container>
 
+                    </Icon.TabBarItemIOS>
+
+                    <Icon.TabBarItemIOS
+                        title="Logout"
+                        iconName="keyboard-arrow-right"
+                        iconColor="grey"
+                        selectedIconName="list"
+                        selectedIconColor="#ffa54c"
+                        renderAsOriginal={true}
+                        onPress={() => {
+                            this._signOut();
+                        }}>
                     </Icon.TabBarItemIOS>
                 </TabBarIOS>
 
