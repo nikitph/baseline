@@ -50,4 +50,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('csstest', () => csstest);
+AppRegistry.registerComponent('naryna', () => csstest);
