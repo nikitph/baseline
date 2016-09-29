@@ -44,7 +44,7 @@ var distortions = ['What is the cognitive distortion here?', 'All or nothing - t
     'Jumping to conclusions',
     'Magnification', 'Emotional reasoning', 'Should statements', 'Labeling', 'Personalization and blame'];
 
-class naryna extends Component {
+class csstest extends Component {
     constructor(props) {
         super(props);
         this.clearText = this.clearText.bind(this);
@@ -297,4 +297,4 @@ class naryna extends Component {
         }
     }
 }
-AppRegistry.registerComponent('naryna', () => naryna);
+AppRegistry.registerComponent('csstest', () => csstest);
