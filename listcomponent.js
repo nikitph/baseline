@@ -50,8 +50,8 @@ export default class ListComponent extends Component {
                                     </View>
                                 <View style={styl.colcontainer}>
                                     <Icon name="announcement" size={20} color="#900"/>
-                                    <Text style={styl.vcol}>{rowData.desc}</Text>
-                                    <Text style={styl.vcol}>{rowData.anxiety}</Text></View>
+                                    <Text style={styl.vcol} numberOfLines={5}>{rowData.desc}</Text>
+                                    <Text style={{fontSize:24,font:'avenirNext'}}>{rowData.anxiety}</Text></View>
                             </View>
 
                         );
