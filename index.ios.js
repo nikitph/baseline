@@ -280,15 +280,79 @@ class csstest extends Component {
                     </Icon.TabBarItemIOS>
 
                     <Icon.TabBarItemIOS
-                        title="Logout"
+                        title="Account"
                         iconName="keyboard-arrow-right"
                         iconColor="grey"
-                        selectedIconName="list"
+                        selectedIconName="keyboard-arrow-right"
                         selectedIconColor="#ffa54c"
+                        selected={this.state.selectedTab === 'pinkTab'}
                         renderAsOriginal={true}
                         onPress={() => {
-                            this._signOut();
+                            this.setState({
+                                selectedTab: 'pinkTab'
+                            });
                         }}>
+
+                        <Container>
+                            <Content>
+
+
+                                <List>
+
+                                    <ListItem style={{marginTop: 10}}>
+                                        <Thumbnail size={40} source={{uri: this.state.user.photo}}
+                                                   style={{alignItems: "center"}}/>
+                                        <Text style={{
+                                            fontSize: 18,
+                                            fontFamily: 'AvenirNext-UltraLight',
+                                            marginBottom: 20,
+                                            marginTop: 20
+                                        }}>
+                                            {this.state.user.name}</Text>
+
+                                    </ListItem>
+                                    <ListItem style={{marginTop: 10}}>
+
+                                        <Button block style={{
+                                            marginLeft: 100,
+                                            marginRight: 100,
+                                            backgroundColor: 'rgba(255,0,0,0.8)'
+                                        }} onPress={() => {
+
+                                            realm.write(() => {
+                                                let thoughts = realm.objects('Thought');
+                                                realm.delete(thoughts); // Deletes all books
+
+                                            });
+
+                                            this.setState({
+                                                selectedTab: 'blueTab'
+                                            });
+                                        }}> Delete All Data </Button>
+                                    </ListItem>
+
+                                    <ListItem style={{marginTop: 10}}>
+
+                                        <Button block style={{
+                                            marginLeft: 100,
+                                            marginRight: 100,
+                                            backgroundColor: 'blue'
+                                        }} onPress={() => {
+                                            this.setState({
+                                                selectedTab: 'redTab'
+                                            });
+                                            this._signOut();
+                                            }
+
+
+
+                                        }> Logout </Button>
+                                    </ListItem>
+
+                                </List>
+
+                            </Content>
+                        </Container>
                     </Icon.TabBarItemIOS>
                 </TabBarIOS>
 
