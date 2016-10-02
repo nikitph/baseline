@@ -928,7 +928,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.naryna;
+				PRODUCT_BUNDLE_IDENTIFIER = com.naryna.naryna;
 				PRODUCT_NAME = naryna;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -959,7 +959,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.naryna;
+				PRODUCT_BUNDLE_IDENTIFIER = com.naryna.naryna;
 				PRODUCT_NAME = naryna;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
